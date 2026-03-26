@@ -11,7 +11,7 @@ pipeline {
         stage('Build backend image') {
             steps {
                  dir('backend') {
-                    bat 'docker build -t travel-backend .'
+                    sh 'docker build -t travel-backend .'
                 }
             }    
         }
@@ -19,14 +19,14 @@ pipeline {
         stage('build frontend image') {
             steps {
                 dir('frontend') {
-                    bat 'docker build -t travel-frontend .'
+                    sh 'docker build -t travel-frontend .'
                 }
             }
         }
 
         stage('run Containers') {
             steps {
-                bat 'docker-compose up -d'
+                sh 'docker-compose up -d'
             }
         }
     }
